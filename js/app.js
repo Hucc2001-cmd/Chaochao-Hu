@@ -17,7 +17,25 @@ window.addEventListener("DOMContentLoaded", () => {
   if (!location.hash) location.hash = "#/";
   render();
   registerServiceWorker();
+  recordVisit();
 });
+
+// 极简访问计数：整个 App 每次被打开时 +1（不是每次切页面都算）。
+// 用的是一个免登录的公开计数接口，只统计"从上线这一刻起"的总次数，
+// 不采集任何个人信息。失败了就静默忽略，不影响正常使用。
+// 用随机字符串而不是仓库名，降低被外人猜到/直接查询这个计数接口的概率
+const VISIT_COUNTER_NAMESPACE = "sab-quiz-f1a237d130cb";
+const VISIT_COUNTER_KEY = "visits";
+function recordVisit() {
+  try {
+    fetch(`https://abacus.jasoncameron.dev/hit/${VISIT_COUNTER_NAMESPACE}/${VISIT_COUNTER_KEY}`, {
+      method: "GET",
+      cache: "no-store",
+    }).catch(() => {});
+  } catch (e) {
+    /* 计数失败不影响 App 正常使用 */
+  }
+}
 
 function goTo(hash) {
   location.hash = hash;
