@@ -1,0 +1,14 @@
+{
+  "name": "SAB 备考通 - 意大利食品饮料经营资质自测",
+  "short_name": "SAB备考通",
+  "description": "意大利 SAB（原REC）食品饮料经营资质自学与自测工具，支持离线使用。",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f5f2",
+  "theme_color": "#0b6e4f",
+  "lang": "zh-CN",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
