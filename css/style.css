@@ -15,7 +15,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #15181a;
     --card: #1f2326;
     --text: #eceae6;
@@ -31,6 +31,21 @@
   }
 }
 
+:root[data-theme="dark"] {
+  --bg: #15181a;
+  --card: #1f2326;
+  --text: #eceae6;
+  --text-muted: #a3a3a3;
+  --border: #2e3336;
+  --primary: #35b787;
+  --primary-dark: #2a9c72;
+  --primary-soft: #12332a;
+  --accent: #e5605f;
+  --accent-soft: #3a2020;
+  --warn: #d8a545;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -41,6 +56,15 @@ body {
   color: var(--text);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
   padding-bottom: calc(64px + env(safe-area-inset-bottom));
+}
+
+.page-title, .unit-title, .quiz-question, .glossary-term {
+  font-family: "Fraunces", Georgia, "Noto Serif SC", serif;
+  text-wrap: balance;
+}
+
+.num, .big {
+  font-variant-numeric: tabular-nums;
 }
 
 #app {
